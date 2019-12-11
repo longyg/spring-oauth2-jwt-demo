@@ -54,5 +54,6 @@
   <modules>
     <module>auth-server</module>
       <module>simple-security</module>
+      <module>oauth-login</module>
   </modules>
 </project>

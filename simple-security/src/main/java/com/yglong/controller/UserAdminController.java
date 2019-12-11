@@ -1,8 +1,10 @@
 package com.yglong.controller;
 
+import com.yglong.model.Resource;
 import com.yglong.model.Role;
 import com.yglong.model.User;
 import com.yglong.model.UserRoles;
+import com.yglong.service.ResourceService;
 import com.yglong.service.RoleService;
 import com.yglong.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class UserAdminController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ResourceService resourceService;
 
     @RequestMapping(value = "/role")
     public void addDefaultRoles() {
@@ -70,5 +75,15 @@ public class UserAdminController {
     @RequestMapping(value = "/getUser/{name}")
     public User getUser(@PathVariable String name) {
         return userService.getUser(name);
+    }
+
+    @RequestMapping(value = "/resource")
+    public void addResource() {
+        List<Resource> resources = new ArrayList<>();
+        resources.add(new Resource("/depart1/**", "ADMIN,MANAGER,DEPART1"));
+        resources.add(new Resource("/depart2/**", "ADMIN,MANAGER,DEPART2"));
+        resources.add(new Resource("/user**", "ADMIN,USER"));
+        resources.add(new Resource("/admin/**", "ADMIN"));
+        resourceService.addResources(resources);
     }
 }
