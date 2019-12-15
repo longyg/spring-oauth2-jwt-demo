@@ -1,0 +1,18 @@
+server:
+  port: 8081
+
+security:
+  oauth2:
+    client:
+      clientId: acme
+      clientSecret: acmesecret
+      accessTokenUri: http://localhost:8080/oauth/token
+      userAuthorizationUri: http://localhost:8080/oauth/authorize
+      authenticationScheme: query
+      clientAuthenticationScheme: form
+    resource:
+      userInfoUri: http://localhost:8080/me
+
+logging:
+  level:
+    org.springframework.security: DEBUG
