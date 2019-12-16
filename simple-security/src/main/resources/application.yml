@@ -19,4 +19,4 @@ security:
       clientId: acme
       clientSecret: acmesecret
       scope: read,write
-      registeredRedirectUri: http://localhost:8081/login
+      registeredRedirectUri: http://www.baidu.com
